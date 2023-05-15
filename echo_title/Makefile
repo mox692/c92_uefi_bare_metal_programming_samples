@@ -38,6 +38,13 @@ LDFLAGS+=-nostdlib
 
 all: fs/EFI/BOOT/BOOTX64.EFI
 
+# mingw32 -> clang
+# main.c -> main.scala
+
+# 	mkdir -p fs/EFI/BOOT
+# 	x86_64-w64-mingw32-gcc -Wall -Wextra -e efi_main -nostdinc -nostdlib \
+# 	-fno-builtin -Wl,--subsystem,10 -o $@ $<
+
 fs/EFI/BOOT/BOOTX64.EFI: main.c
 	mkdir -p fs/EFI/BOOT
 # compile
